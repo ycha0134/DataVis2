@@ -12,38 +12,88 @@
 <body>
     <h1>Renewable Energy Projects in Australia</h1>
     <div id="map"></div>
+    <div id="capacity-bar-chart"></div>
 
     <script>
-        // Define the Vega-Lite specification for the map
+        // Define the Vega-Lite specification for the map with Albers projection and background layer
         var mapSpec = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
             "width": 800,
             "height": 500,
+            "data": {
+                "url": "https://raw.githubusercontent.com/vega/vega-datasets/master/data/world-110m.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "countries"
+                }
+            },
+            "layer": [
+                {
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": "#e0e0e0",
+                        "stroke": "white"
+                    },
+                    "projection": {
+                        "type": "albers",
+                        "center": [132, -28]
+                    }
+                },
+                {
+                    "data": {
+                        "url": "renewable_energy_projects.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "mark": "circle",
+                    "projection": {
+                        "type": "albers",
+                        "center": [132, -28]
+                    },
+                    "encoding": {
+                        "longitude": {"field": "Longitude", "type": "quantitative"},
+                        "latitude": {"field": "Latitude", "type": "quantitative"},
+                        "size": {"field": "Capacity_MW", "type": "quantitative", "scale": {"range": [50, 1000]}},
+                        "color": {"field": "Type", "type": "nominal", "title": "Energy Type"},
+                        "tooltip": [
+                            {"field": "Project_Name", "type": "nominal", "title": "Project Name"},
+                            {"field": "Type", "type": "nominal", "title": "Type"},
+                            {"field": "Capacity_MW", "type": "quantitative", "title": "Capacity (MW)"}
+                        ]
+                    }
+                }
+            ]
+        };
+
+        // Embed the map in the div with id "map"
+        vegaEmbed('#map', mapSpec).catch(console.error);
+
+        // Define the Vega-Lite specification for the capacity bar chart
+        var barChartSpec = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "width": 800,
+            "height": 300,
             "data": {
                 "url": "renewable_energy_projects.csv",
                 "format": {
                     "type": "csv"
                 }
             },
-            "projection": {
-                "type": "mercator"
-            },
-            "mark": "circle",
+            "mark": "bar",
             "encoding": {
-                "longitude": {"field": "Longitude", "type": "quantitative"},
-                "latitude": {"field": "Latitude", "type": "quantitative"},
-                "size": {"field": "Capacity_MW", "type": "quantitative", "title": "Capacity (MW)", "scale": {"range": [10, 500]}},
+                "x": {"field": "Type", "type": "nominal", "title": "Energy Type"},
+                "y": {"aggregate": "sum", "field": "Capacity_MW", "type": "quantitative", "title": "Total Capacity (MW)"},
                 "color": {"field": "Type", "type": "nominal", "title": "Energy Type"},
                 "tooltip": [
-                    {"field": "Project_Name", "type": "nominal", "title": "Project Name"},
-                    {"field": "Type", "type": "nominal", "title": "Type"},
-                    {"field": "Capacity_MW", "type": "quantitative", "title": "Capacity (MW)"}
+                    {"field": "Type", "type": "nominal", "title": "Energy Type"},
+                    {"aggregate": "sum", "field": "Capacity_MW", "type": "quantitative", "title": "Total Capacity (MW)"}
                 ]
             }
         };
 
-        // Embed the map in the div with id "map"
-        vegaEmbed('#map', mapSpec).catch(console.error);
+        // Embed the bar chart in the div with id "capacity-bar-chart"
+        vegaEmbed('#capacity-bar-chart', barChartSpec).catch(console.error);
     </script>
 </body>
 </html>
