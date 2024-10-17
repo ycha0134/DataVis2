@@ -4,96 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Renewable Energy Projects in Australia</title>
-    <!-- Include Vega and Vega-Lite Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/purecss@2.0.6/build/pure-min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        p {
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+        .visualization {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+        }
+    </style>
 </head>
 <body>
     <h1>Renewable Energy Projects in Australia</h1>
-    <div id="map"></div>
-    <div id="capacity-bar-chart"></div>
+    <p>
+        Australia has seen rapid growth in renewable energy projects over the past decade. 
+        This visualisation explores the distribution, growth, and types of renewable energy projects 
+        across the country. We will take a closer look at where these projects are located, how capacity 
+        has increased over time, and the proportion of energy types that make up Australia’s renewable 
+        energy landscape.
+    </p>
+
+    <h2>Geographic Distribution of Projects</h2>
+    <p>
+        The map below shows the geographical distribution of renewable energy projects across Australia. 
+        Each circle represents a project, with its size corresponding to the capacity (in megawatts) 
+        and its color indicating the type of energy (Solar, Wind, Hydro). Hover over each circle to see 
+        more details about the project, including its name and year of operation.
+    </p>
+    <div class="visualization" id="map"></div>
+
+    <h2>Growth of Renewable Energy Capacity Over Time</h2>
+    <p>
+        Renewable energy capacity in Australia has been growing steadily. The line chart below illustrates 
+        the cumulative capacity of renewable energy projects over time, segmented by energy type. This chart 
+        provides insight into which types of renewable energy have seen the most growth and which have emerged 
+        as the dominant sources of clean energy in recent years.
+    </p>
+    <div class="visualization" id="line-chart"></div>
+
+    <h2>Proportion of Renewable Energy Types</h2>
+    <p>
+        Renewable energy in Australia is diverse, but some types are more prominent than others. The donut chart 
+        below shows the proportion of each energy type—solar, wind, and hydro—in the total renewable energy capacity. 
+        This helps us understand the overall contribution of each type to the country’s energy mix.
+    </p>
+    <div class="visualization" id="donut-chart"></div>
+
+    <p>
+        These visualisations highlight the increasing role of renewable energy in Australia's energy sector. As we 
+        continue to move towards sustainable energy solutions, understanding the growth and distribution of these projects 
+        is crucial for planning future developments and making informed decisions.
+    </p>
 
     <script>
-        // Define the Vega-Lite specification for the map with Albers projection and background layer
-        var mapSpec = {
-            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-            "width": 800,
-            "height": 500,
-            "data": {
-                "url": "https://raw.githubusercontent.com/vega/vega-datasets/master/data/world-110m.json",
-                "format": {
-                    "type": "topojson",
-                    "feature": "countries"
-                }
-            },
-            "layer": [
-                {
-                    "mark": {
-                        "type": "geoshape",
-                        "fill": "#e0e0e0",
-                        "stroke": "white"
-                    },
-                    "projection": {
-                        "type": "albers",
-                        "center": [132, -28]
-                    }
-                },
-                {
-                    "data": {
-                        "url": "renewable_energy_projects.csv",
-                        "format": {
-                            "type": "csv"
-                        }
-                    },
-                    "mark": "circle",
-                    "projection": {
-                        "type": "albers",
-                        "center": [132, -28]
-                    },
-                    "encoding": {
-                        "longitude": {"field": "Longitude", "type": "quantitative"},
-                        "latitude": {"field": "Latitude", "type": "quantitative"},
-                        "size": {"field": "Capacity_MW", "type": "quantitative", "scale": {"range": [50, 1000]}},
-                        "color": {"field": "Type", "type": "nominal", "title": "Energy Type"},
-                        "tooltip": [
-                            {"field": "Project_Name", "type": "nominal", "title": "Project Name"},
-                            {"field": "Type", "type": "nominal", "title": "Type"},
-                            {"field": "Capacity_MW", "type": "quantitative", "title": "Capacity (MW)"}
-                        ]
-                    }
-                }
-            ]
-        };
+        // Embed the map visualization using a JSON file
+        vegaEmbed('#map', 'mapSpec.json').catch(console.error);
 
-        // Embed the map in the div with id "map"
-        vegaEmbed('#map', mapSpec).catch(console.error);
+        // Embed the line chart visualization using a JSON file
+        vegaEmbed('#line-chart', 'lineChartSpec.json').catch(console.error);
 
-        // Define the Vega-Lite specification for the capacity bar chart
-        var barChartSpec = {
-            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-            "width": 800,
-            "height": 300,
-            "data": {
-                "url": "renewable_energy_projects.csv",
-                "format": {
-                    "type": "csv"
-                }
-            },
-            "mark": "bar",
-            "encoding": {
-                "x": {"field": "Type", "type": "nominal", "title": "Energy Type"},
-                "y": {"aggregate": "sum", "field": "Capacity_MW", "type": "quantitative", "title": "Total Capacity (MW)"},
-                "color": {"field": "Type", "type": "nominal", "title": "Energy Type"},
-                "tooltip": [
-                    {"field": "Type", "type": "nominal", "title": "Energy Type"},
-                    {"aggregate": "sum", "field": "Capacity_MW", "type": "quantitative", "title": "Total Capacity (MW)"}
-                ]
-            }
-        };
-
-        // Embed the bar chart in the div with id "capacity-bar-chart"
-        vegaEmbed('#capacity-bar-chart', barChartSpec).catch(console.error);
+        // Embed the donut chart visualization using a JSON file
+        vegaEmbed('#donut-chart', 'donutChartSpec.json').catch(console.error);
     </script>
 </body>
 </html>
