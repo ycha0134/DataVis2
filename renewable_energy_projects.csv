@@ -1,0 +1,7 @@
+Project_Name,Type,Capacity_MW,Latitude,Longitude
+Solar Farm 1,Solar,50,-33.865143,151.2099
+Wind Farm 1,Wind,100,-34.928497,138.600739
+Hydro Plant 1,Hydro,200,-37.813629,144.963058
+Solar Farm 2,Solar,75,-31.950527,115.860457
+Wind Farm 2,Wind,150,-27.46977,153.025124
+Hydro Plant 2,Hydro,300,-42.882137,147.327195
