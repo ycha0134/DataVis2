@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renewable Energy Projects in Australia</title>
+    <!-- Include Vega and Vega-Lite Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+    <h1>Renewable Energy Projects in Australia</h1>
+    <div id="map"></div>
+
+    <script>
+        // Define the Vega-Lite specification for the map
+        var mapSpec = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "width": 800,
+            "height": 500,
+            "data": {
+                "url": "renewable_energy_projects.csv",
+                "format": {
+                    "type": "csv"
+                }
+            },
+            "projection": {
+                "type": "mercator"
+            },
+            "mark": "circle",
+            "encoding": {
+                "longitude": {"field": "Longitude", "type": "quantitative"},
+                "latitude": {"field": "Latitude", "type": "quantitative"},
+                "size": {"field": "Capacity_MW", "type": "quantitative", "title": "Capacity (MW)", "scale": {"range": [10, 500]}},
+                "color": {"field": "Type", "type": "nominal", "title": "Energy Type"},
+                "tooltip": [
+                    {"field": "Project_Name", "type": "nominal", "title": "Project Name"},
+                    {"field": "Type", "type": "nominal", "title": "Type"},
+                    {"field": "Capacity_MW", "type": "quantitative", "title": "Capacity (MW)"}
+                ]
+            }
+        };
+
+        // Embed the map in the div with id "map"
+        vegaEmbed('#map', mapSpec).catch(console.error);
+    </script>
+</body>
+</html>
