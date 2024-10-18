@@ -3,7 +3,7 @@
     "width": 800,
     "height": 400,
     "data": {
-        "url": "renewable_energy_projects.csv",
+        "url": "energy_over_time.csv",
         "format": {
             "type": "csv"
         }
