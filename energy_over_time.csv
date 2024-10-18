@@ -1,0 +1,10 @@
+Project_Name,Type,Capacity_MW,Latitude,Longitude,Year_Operational
+Solar Farm A,Solar,50,-33.865143,151.2099,2015
+Wind Farm B,Wind,100,-34.928497,138.600739,2016
+Hydro Plant C,Hydro,200,-37.813629,144.963058,2017
+Solar Farm D,Solar,75,-31.950527,115.860457,2018
+Wind Farm E,Wind,150,-27.46977,153.025124,2019
+Hydro Plant F,Hydro,300,-42.882137,147.327195,2020
+Solar Farm G,Solar,120,-35.280937,149.130009,2021
+Wind Farm H,Wind,180,-23.700506,133.880745,2022
+Hydro Plant I,Hydro,250,-36.7123,148.017826,2023
