@@ -10,18 +10,29 @@
     },
     "mark": {
         "type": "arc",
-        "innerRadius": 100
+        "innerRadius": 100,
+        "tooltip": true
     },
     "encoding": {
         "theta": {
             "aggregate": "sum",
             "field": "Capacity_MW",
-            "type": "quantitative"
+            "type": "quantitative",
+            "title": "Total Capacity (MW)"
         },
         "color": {
             "field": "Type",
             "type": "nominal",
-            "title": "Energy Type"
+            "title": "Energy Type",
+            "legend": {"orient": "right"},
+            "scale": {"scheme": "category10"}
+        },
+        "opacity": {
+            "condition": {
+                "param": "highlight",
+                "value": 1
+            },
+            "value": 0.4
         },
         "tooltip": [
             {
@@ -36,5 +47,17 @@
                 "title": "Total Capacity (MW)"
             }
         ]
-    }
+    },
+    "params": [
+        {
+            "name": "highlight",
+            "select": {
+                "type": "point",
+                "fields": ["Type"],
+                "on": "click",
+                "toggle": false,
+                "clear": "mouseout"
+            }
+        }
+    ]
 }
