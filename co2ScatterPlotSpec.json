@@ -8,22 +8,22 @@
   },
   "mark": {
     "type": "point",
-    "filled": true,  
-    "stroke": "black",  
-    "strokeWidth": 0.5,  
-    "opacity": 0.8,  
-    "size": 100 
+    "filled": true,
+    "opacity": 0.8,
+    "size": 100
   },
   "encoding": {
     "x": {
       "field": "Capacity_MW",
       "type": "quantitative",
-      "title": "Capacity (MW)"
+      "title": "Capacity (MW)",
+      "scale": {"zero": false}
     },
     "y": {
       "field": "CO2_Reduction_Tons",
       "type": "quantitative",
-      "title": "CO2 Reduction (Tons)"
+      "title": "CO2 Reduction (Tons)",
+      "scale": {"zero": false}
     },
     "color": {
       "field": "Type",
