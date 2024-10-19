@@ -71,6 +71,49 @@
         is crucial for planning future developments and making informed decisions.
     </p>
 
+     <p>
+        Australia has been investing heavily in renewable energy over the past decade, resulting in significant growth 
+        in capacity and a wider distribution of projects across the country. This visualization provides insights into 
+        the cumulative growth, geographic distribution, economic impact, and environmental benefits of renewable energy 
+        projects in Australia.
+    </p>
+
+    <!-- Stacked Area Chart: Cumulative Growth by Energy Type -->
+    <h2>Cumulative Growth of Renewable Capacity by Energy Type</h2>
+    <p>
+        This stacked area chart shows the cumulative capacity growth of renewable energy projects over time in Australia. 
+        It helps identify how different energy types (Solar, Wind, Hydro) have contributed to the overall renewable energy 
+        mix over the years.
+    </p>
+    <div class="visualization" id="stacked-area-chart"></div>
+
+    <!-- Bar Chart: Distribution by State/Region -->
+    <h2>Distribution of Projects by State/Region</h2>
+    <p>
+        The bar chart below presents the distribution of renewable energy projects across Australian states and regions. 
+        It provides an overview of which areas have the highest number of projects, highlighting geographic focus and 
+        regional support for renewable energy.
+    </p>
+    <div class="visualization" id="state-distribution-chart"></div>
+
+    <!-- Bar Chart: Investment Cost by Energy Type -->
+    <h2>Total Investment Cost by Energy Type</h2>
+    <p>
+        The bar chart below illustrates the total investment costs for different types of renewable energy projects in 
+        Australia. It reflects the financial commitment to each type of energy and provides insight into which energy sources 
+        have received more economic backing.
+    </p>
+    <div class="visualization" id="investment-cost-chart"></div>
+
+    <!-- Scatter Plot: CO2 Reduction vs. Capacity -->
+    <h2>CO2 Emission Reduction vs. Capacity</h2>
+    <p>
+        This scatter plot demonstrates the relationship between the capacity of renewable energy projects and the amount of 
+        CO2 emissions they reduce. It highlights how larger projects contribute significantly to reducing greenhouse gas emissions, 
+        underscoring the environmental impact of renewable energy in Australia.
+    </p>
+    <div class="visualization" id="co2-scatter-plot"></div>
+
     <script>
         // Embed the map visualization using a JSON file
         vegaEmbed('#map', 'mapSpec.json').catch(console.error);
@@ -80,6 +123,18 @@
 
         // Embed the donut chart visualization using a JSON file
         vegaEmbed('#donut-chart', 'donutChartSpec.json').catch(console.error);
+
+        // Embed the stacked area chart from JSON file
+        vegaEmbed('#stacked-area-chart', 'stackedAreaSpec.json').catch(console.error);
+
+        // Embed the state distribution bar chart from JSON file
+        vegaEmbed('#state-distribution-chart', 'stateDistributionSpec.json').catch(console.error);
+
+        // Embed the investment cost bar chart from JSON file
+        vegaEmbed('#investment-cost-chart', 'investmentCostSpec.json').catch(console.error);
+
+        // Embed the CO2 reduction scatter plot from JSON file
+        vegaEmbed('#co2-scatter-plot', 'co2ScatterPlotSpec.json').catch(console.error);
     </script>
 </body>
 </html>
