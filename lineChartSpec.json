@@ -8,7 +8,11 @@
             "type": "csv"
         }
     },
-    "mark": "line",
+    "mark": {
+        "type": "line",
+        "point": {"filled": true, "size": 50}, 
+        "tooltip": true
+    },
     "encoding": {
         "x": {
             "field": "Year_Operational",
@@ -24,7 +28,15 @@
         "color": {
             "field": "Type",
             "type": "nominal",
-            "title": "Energy Type"
+            "title": "Energy Type",
+            "legend": {"orient": "top-right"}
+        },
+        "opacity": {
+            "condition": {
+                "param": "highlight",
+                "value": 1
+            },
+            "value": 0.3
         },
         "tooltip": [
             {
@@ -37,7 +49,25 @@
                 "field": "Capacity_MW",
                 "type": "quantitative",
                 "title": "Total Capacity (MW)"
+            },
+            {
+                "field": "Type",
+                "type": "nominal",
+                "title": "Energy Type"
             }
         ]
-    }
+    },
+    "params": [
+        {
+            "name": "highlight",
+            "select": {
+                "type": "point",
+                "fields": ["Type"],
+                "on": "click",
+                "toggle": false,
+                "clear": "mouseout"
+            },
+            "bind": "legend"
+        }
+    ]
 }
