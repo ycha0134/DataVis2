@@ -3,9 +3,14 @@
   "width": 800,
   "height": 500,
   "data": {
-    "url": "renewable_energy_projects.csv",
+    "url": "enhanced_renewable_energy_projects.csv",
     "format": {"type": "csv"}
   },
+  "transform": [
+    {
+      "filter": "datum.Capacity_MW != null && datum.CO2_Reduction_Tons != null"
+    }
+  ],
   "mark": {
     "type": "point",
     "filled": true,
