@@ -8,8 +8,9 @@
   },
   "projection": {
     "type": "mercator",
-    "center": [135, -28],  
-    "scale": 2000 
+    "center": [133, -28], 
+    "scale": 2000,
+    "clipExtent": [[0, 0], [800, 500]]
   },
   "layer": [
     {
@@ -26,8 +27,7 @@
     {
       "mark": {
         "type": "circle",
-        "size": 300,  
-        "opacity": 0.8  
+        "opacity": 0.8
       },
       "encoding": {
         "longitude": {"field": "Longitude", "type": "quantitative"},
@@ -35,7 +35,7 @@
         "size": {
           "field": "Capacity_MW",
           "type": "quantitative",
-          "scale": {"range": [150, 1200]}, 
+          "scale": {"range": [100, 1000]},
           "legend": {"title": "Capacity (MW)"}
         },
         "color": {
