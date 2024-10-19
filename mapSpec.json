@@ -1,83 +1,42 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 800,
-    "height": 500,
-    "data": {
-        "url": "renewable_energy_projects.csv",
-        "format": {
-            "type": "csv"
-        }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "data": {
+    "url": "renewable_energy_projects.csv",
+    "format": {"type": "csv"}
+  },
+  "projection": {
+    "type": "mercator",  
+    "center": [135, -25],  
+    "scale": 1000  
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vega/vega-datasets/master/data/world-110m.json",
+        "format": {"type": "topojson", "feature": "countries"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e0e0e0",
+        "stroke": "white"
+      }
     },
-    "projection": {
-        "type": "albers",
-        "center": [
-            132,
-            -28
+    {
+      "mark": "circle",
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "size": {"field": "Capacity_MW", "type": "quantitative", "scale": {"range": [50, 1000]}},
+        "color": {"field": "Type", "type": "nominal"},
+        "tooltip": [
+          {"field": "Project_Name", "type": "nominal", "title": "Project Name"},
+          {"field": "Type", "type": "nominal", "title": "Energy Type"},
+          {"field": "Capacity_MW", "type": "quantitative", "title": "Capacity (MW)"},
+          {"field": "Year_Operational", "type": "quantitative", "title": "Operational Since"}
         ]
-    },
-    "layer": [
-        {
-            "data": {
-                "url": "https://raw.githubusercontent.com/vega/vega-datasets/master/data/world-110m.json",
-                "format": {
-                    "type": "topojson",
-                    "feature": "countries"
-                }
-            },
-            "mark": {
-                "type": "geoshape",
-                "fill": "#e0e0e0",
-                "stroke": "white"
-            }
-        },
-        {
-            "mark": "circle",
-            "encoding": {
-                "longitude": {
-                    "field": "Longitude",
-                    "type": "quantitative"
-                },
-                "latitude": {
-                    "field": "Latitude",
-                    "type": "quantitative"
-                },
-                "size": {
-                    "field": "Capacity_MW",
-                    "type": "quantitative",
-                    "scale": {
-                        "range": [
-                            50,
-                            1000
-                        ]
-                    }
-                },
-                "color": {
-                    "field": "Type",
-                    "type": "nominal"
-                },
-                "tooltip": [
-                    {
-                        "field": "Project_Name",
-                        "type": "nominal",
-                        "title": "Project Name"
-                    },
-                    {
-                        "field": "Type",
-                        "type": "nominal",
-                        "title": "Energy Type"
-                    },
-                    {
-                        "field": "Capacity_MW",
-                        "type": "quantitative",
-                        "title": "Capacity (MW)"
-                    },
-                    {
-                        "field": "Year_Operational",
-                        "type": "quantitative",
-                        "title": "Operational Since"
-                    }
-                ]
-            }
-        }
-    ]
+      }
+    }
+  ]
 }
