@@ -30,7 +30,7 @@
             "field": "Type",
             "type": "nominal",
             "title": "Energy Type",
-            "legend": {"orient": "top-right"}
+            "legend": {"orient": "bottom-right"}
         },
         "opacity": {
             "condition": {
