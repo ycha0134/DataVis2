@@ -17,6 +17,7 @@
         "x": {
             "field": "Year_Operational",
             "type": "temporal",
+            "timeUnit": "year", 
             "title": "Year"
         },
         "y": {
@@ -42,6 +43,7 @@
             {
                 "field": "Year_Operational",
                 "type": "temporal",
+                "timeUnit": "year",
                 "title": "Year"
             },
             {
