@@ -7,9 +7,9 @@
     "format": {"type": "csv"}
   },
   "projection": {
-    "type": "mercator",  
-    "center": [135, -25],  
-    "scale": 1000  
+    "type": "mercator",
+    "center": [135, -25],
+    "scale": 1500  
   },
   "layer": [
     {
@@ -28,13 +28,27 @@
       "encoding": {
         "longitude": {"field": "Longitude", "type": "quantitative"},
         "latitude": {"field": "Latitude", "type": "quantitative"},
-        "size": {"field": "Capacity_MW", "type": "quantitative", "scale": {"range": [50, 1000]}},
-        "color": {"field": "Type", "type": "nominal"},
+        "size": {
+          "field": "Capacity_MW",
+          "type": "quantitative",
+          "scale": {"range": [100, 1000]}, 
+          "legend": {"title": "Capacity (MW)"}
+        },
+        "color": {
+          "field": "Type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Solar", "Wind", "Hydro"],
+            "range": ["orange", "red", "blue"]  
+          },
+          "legend": {"title": "Energy Type"}
+        },
         "tooltip": [
           {"field": "Project_Name", "type": "nominal", "title": "Project Name"},
           {"field": "Type", "type": "nominal", "title": "Energy Type"},
           {"field": "Capacity_MW", "type": "quantitative", "title": "Capacity (MW)"},
-          {"field": "Year_Operational", "type": "quantitative", "title": "Operational Since"}
+          {"field": "Latitude", "type": "quantitative", "title": "Latitude"},
+          {"field": "Longitude", "type": "quantitative", "title": "Longitude"}
         ]
       }
     }
