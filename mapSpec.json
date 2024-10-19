@@ -8,8 +8,8 @@
   },
   "projection": {
     "type": "mercator",
-    "center": [135, -25],
-    "scale": 1500  
+    "center": [135, -28],  
+    "scale": 2000 
   },
   "layer": [
     {
@@ -24,14 +24,18 @@
       }
     },
     {
-      "mark": "circle",
+      "mark": {
+        "type": "circle",
+        "size": 300,  
+        "opacity": 0.8  
+      },
       "encoding": {
         "longitude": {"field": "Longitude", "type": "quantitative"},
         "latitude": {"field": "Latitude", "type": "quantitative"},
         "size": {
           "field": "Capacity_MW",
           "type": "quantitative",
-          "scale": {"range": [100, 1000]}, 
+          "scale": {"range": [150, 1200]}, 
           "legend": {"title": "Capacity (MW)"}
         },
         "color": {
@@ -39,7 +43,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["Solar", "Wind", "Hydro"],
-            "range": ["orange", "red", "blue"]  
+            "range": ["orange", "red", "blue"]
           },
           "legend": {"title": "Energy Type"}
         },
