@@ -93,15 +93,6 @@
     </p>
     <div class="visualization" id="stacked-area-chart"></div>
 
-    <!-- Bar Chart: Distribution by State/Region -->
-    <h2>Distribution of Projects by State/Region</h2>
-    <p>
-        The bar chart below presents the distribution of renewable energy projects across Australian states and regions. 
-        It provides an overview of which areas have the highest number of projects, highlighting geographic focus and 
-        regional support for renewable energy.
-    </p>
-    <div class="visualization" id="state-distribution-chart"></div>
-
     <!-- Bar Chart: Investment Cost by Energy Type -->
     <h2>Total Investment Cost by Energy Type</h2>
     <p>
@@ -132,9 +123,6 @@
 
         // Embed the stacked area chart from JSON file
         vegaEmbed('#stacked-area-chart', 'stackedAreaSpec.json').catch(console.error);
-
-        // Embed the state distribution bar chart from JSON file
-        vegaEmbed('#state-distribution-chart', 'stateDistributionSpec.json').catch(console.error);
 
         // Embed the investment cost bar chart from JSON file
         vegaEmbed('#investment-cost-chart', 'investmentCostSpec.json').catch(console.error);
