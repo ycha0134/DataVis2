@@ -6,16 +6,11 @@
     "url": "enhanced_renewable_energy_projects.csv",
     "format": {"type": "csv"}
   },
-  "transform": [
-    {
-      "filter": "datum.Capacity_MW != null && datum.CO2_Reduction_Tons != null"
-    }
-  ],
   "mark": {
     "type": "point",
     "filled": true,
     "opacity": 0.8,
-    "size": 100
+    "size": 150
   },
   "encoding": {
     "x": {
