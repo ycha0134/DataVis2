@@ -1,0 +1,29 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 400,
+    "data": {
+        "url": "enhanced_renewable_energy_projects.csv",
+        "format": {
+            "type": "csv"
+        }
+    },
+    "mark": "area",
+    "encoding": {
+        "x": {
+            "field": "Year_Operational",
+            "type": "temporal",
+            "title": "Year"
+        },
+        "y": {
+            "field": "Cumulative_Capacity_MW",
+            "type": "quantitative",
+            "title": "Cumulative Capacity (MW)"
+        },
+        "color": {
+            "field": "Type",
+            "type": "nominal",
+            "title": "Energy Type"
+        }
+    }
+}
