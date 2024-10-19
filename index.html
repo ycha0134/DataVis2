@@ -27,12 +27,13 @@
             justify-content: center; 
             align-items: center; 
             margin: 20px auto;  
-            width: 100%;  
+            width: 100%;
             max-width: 800px;  
         }
         .vega-embed {
-            display: inline-block; 
+            display: block; 
             margin: auto; 
+        }
     </style>
 </head>
 <body>
@@ -71,20 +72,6 @@
     </p>
     <div class="visualization" id="donut-chart"></div>
 
-    <p>
-        These visualisations highlight the increasing role of renewable energy in Australia's energy sector. As we 
-        continue to move towards sustainable energy solutions, understanding the growth and distribution of these projects 
-        is crucial for planning future developments and making informed decisions.
-    </p>
-
-     <p>
-        Australia has been investing heavily in renewable energy over the past decade, resulting in significant growth 
-        in capacity and a wider distribution of projects across the country. This visualization provides insights into 
-        the cumulative growth, geographic distribution, economic impact, and environmental benefits of renewable energy 
-        projects in Australia.
-    </p>
-
-    <!-- Stacked Area Chart: Cumulative Growth by Energy Type -->
     <h2>Cumulative Growth of Renewable Capacity by Energy Type</h2>
     <p>
         This stacked area chart shows the cumulative capacity growth of renewable energy projects over time in Australia. 
@@ -93,7 +80,6 @@
     </p>
     <div class="visualization" id="stacked-area-chart"></div>
 
-    <!-- Bar Chart: Investment Cost by Energy Type -->
     <h2>Total Investment Cost by Energy Type</h2>
     <p>
         The bar chart below illustrates the total investment costs for different types of renewable energy projects in 
@@ -102,7 +88,6 @@
     </p>
     <div class="visualization" id="investment-cost-chart"></div>
 
-    <!-- Scatter Plot: CO2 Reduction vs. Capacity -->
     <h2>CO2 Emission Reduction vs. Capacity</h2>
     <p>
         This scatter plot demonstrates the relationship between the capacity of renewable energy projects and the amount of 
@@ -112,23 +97,12 @@
     <div class="visualization" id="co2-scatter-plot"></div>
 
     <script>
-        // Embed the map visualization using a JSON file
-        vegaEmbed('#map', 'mapSpec.json').catch(console.error);
-
-        // Embed the line chart visualization using a JSON file
-        vegaEmbed('#line-chart', 'lineChartSpec.json').catch(console.error);
-
-        // Embed the donut chart visualization using a JSON file
-        vegaEmbed('#donut-chart', 'donutChartSpec.json').catch(console.error);
-
-        // Embed the stacked area chart from JSON file
-        vegaEmbed('#stacked-area-chart', 'stackedAreaSpec.json').catch(console.error);
-
-        // Embed the investment cost bar chart from JSON file
-        vegaEmbed('#investment-cost-chart', 'investmentCostSpec.json').catch(console.error);
-
-        // Embed the CO2 reduction scatter plot from JSON file
-        vegaEmbed('#co2-scatter-plot', 'co2ScatterPlotSpec.json').catch(console.error);
+        vegaEmbed('#map', 'mapSpec.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#line-chart', 'lineChartSpec.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#donut-chart', 'donutChartSpec.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#stacked-area-chart', 'stackedAreaSpec.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#investment-cost-chart', 'investmentCostSpec.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#co2-scatter-plot', 'co2ScatterPlotSpec.json', {"actions": false}).catch(console.error);
     </script>
 </body>
 </html>
