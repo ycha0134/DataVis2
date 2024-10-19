@@ -1,46 +1,44 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 800,
-    "height": 400,
-    "data": {
-        "url": "enhanced_renewable_energy_projects.csv",
-        "format": {
-            "type": "csv"
-        }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "data": {
+    "url": "renewable_energy_projects.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": {
+    "type": "point",
+    "filled": true,  
+    "stroke": "black",  
+    "strokeWidth": 0.5,  
+    "opacity": 0.8,  
+    "size": 100 
+  },
+  "encoding": {
+    "x": {
+      "field": "Capacity_MW",
+      "type": "quantitative",
+      "title": "Capacity (MW)"
     },
-    "mark": "point",
-    "encoding": {
-        "x": {
-            "field": "Capacity_MW",
-            "type": "quantitative",
-            "title": "Capacity (MW)"
-        },
-        "y": {
-            "field": "CO2_Reduction_Tons",
-            "type": "quantitative",
-            "title": "CO2 Reduction (Tons)"
-        },
-        "color": {
-            "field": "Type",
-            "type": "nominal",
-            "title": "Energy Type"
-        },
-        "tooltip": [
-            {
-                "field": "Project_Name",
-                "type": "nominal",
-                "title": "Project Name"
-            },
-            {
-                "field": "Capacity_MW",
-                "type": "quantitative",
-                "title": "Capacity (MW)"
-            },
-            {
-                "field": "CO2_Reduction_Tons",
-                "type": "quantitative",
-                "title": "CO2 Reduction (Tons)"
-            }
-        ]
-    }
+    "y": {
+      "field": "CO2_Reduction_Tons",
+      "type": "quantitative",
+      "title": "CO2 Reduction (Tons)"
+    },
+    "color": {
+      "field": "Type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Solar", "Wind", "Hydro"],
+        "range": ["orange", "red", "blue"]
+      },
+      "legend": {"title": "Energy Type"}
+    },
+    "tooltip": [
+      {"field": "Project_Name", "type": "nominal", "title": "Project Name"},
+      {"field": "Type", "type": "nominal", "title": "Energy Type"},
+      {"field": "Capacity_MW", "type": "quantitative", "title": "Capacity (MW)"},
+      {"field": "CO2_Reduction_Tons", "type": "quantitative", "title": "CO2 Reduction (Tons)"}
+    ]
+  }
 }
