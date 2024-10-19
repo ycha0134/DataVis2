@@ -3,14 +3,13 @@
   "width": 800,
   "height": 500,
   "data": {
-    "url": "renewable_energy_projects.csv",
+    "url": "enhanced_renewable_energy_projects.csv",
     "format": {"type": "csv"}
   },
   "projection": {
     "type": "mercator",
-    "center": [133, -28], 
-    "scale": 500,
-    "clipExtent": [[0, 0], [800, 500]]
+    "center": [135, -25],
+    "scale": 1500
   },
   "layer": [
     {
@@ -25,10 +24,7 @@
       }
     },
     {
-      "mark": {
-        "type": "circle",
-        "opacity": 0.8
-      },
+      "mark": "circle",
       "encoding": {
         "longitude": {"field": "Longitude", "type": "quantitative"},
         "latitude": {"field": "Latitude", "type": "quantitative"},
@@ -51,8 +47,10 @@
           {"field": "Project_Name", "type": "nominal", "title": "Project Name"},
           {"field": "Type", "type": "nominal", "title": "Energy Type"},
           {"field": "Capacity_MW", "type": "quantitative", "title": "Capacity (MW)"},
-          {"field": "Latitude", "type": "quantitative", "title": "Latitude"},
-          {"field": "Longitude", "type": "quantitative", "title": "Longitude"}
+          {"field": "Year_Operational", "type": "quantitative", "title": "Operational Since"},
+          {"field": "State", "type": "nominal", "title": "State"},
+          {"field": "Investment_Cost_Million_AUD", "type": "quantitative", "title": "Investment Cost (Million AUD)"},
+          {"field": "CO2_Reduction_Tons", "type": "quantitative", "title": "CO2 Reduction (Tons)"}
         ]
       }
     }
