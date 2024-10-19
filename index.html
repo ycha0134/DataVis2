@@ -34,6 +34,12 @@
         .vega-embed {
             max-width: 100%;
         }
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: gray;
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
@@ -95,6 +101,10 @@
         underscoring the environmental impact of renewable energy in Australia.
     </p>
     <div class="visualization" id="co2-scatter-plot"></div>
+
+    <footer>
+        <p>This visualisation is created by Youttavong Chan. The data used is filtered from multiple files from the Australian Energy Regulator, Clean Energy Regulator, Australian Renewable Energy Agency, Global Power Plant Database, and National Greenhouse and Energy Reporting.</p>
+    </footer>
 
     <script>
         vegaEmbed('#map', 'mapSpec.json', {"actions": false}).catch(console.error);
